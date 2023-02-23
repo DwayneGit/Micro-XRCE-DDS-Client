@@ -87,6 +87,14 @@ set(_microcdr_tag v2.0.1)
 set(_deps "")
 list(APPEND _deps "microcdr\;${_microcdr_version}")
 
+if(PLATFORM_NAME_RPIPICO)
+    message(STATUS, "Checking if using RPI Pico SDK")
+    include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
+    pico_sdk_init()
+else()
+    message(STATUS "PLATFORM_NAME_RPIPICO Not found")
+endif()
+
 ###############################################################################
 # Project
 ###############################################################################
